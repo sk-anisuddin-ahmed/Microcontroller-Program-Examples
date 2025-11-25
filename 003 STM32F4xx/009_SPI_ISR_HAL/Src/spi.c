@@ -1,0 +1,71 @@
+/*
+ * spic.c
+ *
+ *  Created on: 25-Nov-2025
+ *      Author: skani
+ */
+
+#include "stm32f4xx_hal.h"
+#include "spi.h"
+#include "itm.h"
+#include <stdio.h>
+
+SPI_HandleTypeDef hspi1;
+
+uint8_t txData[] = "Hello SPI";
+uint8_t rxData[32];
+
+void SPI1_Init(void)
+{
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+    // Enable clocks
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_SPI1_CLK_ENABLE();
+
+    // SPI1 pins: PA5 = SCK, PA6 = MISO, PA7 = MOSI
+    GPIO_InitStruct.Pin       = GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7;
+    GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull      = GPIO_NOPULL;
+    GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_VERY_HIGH;
+    GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+    // Configure SPI peripheral
+    hspi1.Instance               = SPI1;
+    hspi1.Init.Mode              = SPI_MODE_MASTER;
+    hspi1.Init.Direction         = SPI_DIRECTION_2LINES;
+    hspi1.Init.DataSize          = SPI_DATASIZE_8BIT;
+    hspi1.Init.CLKPolarity       = SPI_POLARITY_LOW;
+    hspi1.Init.CLKPhase          = SPI_PHASE_1EDGE;
+    hspi1.Init.NSS               = SPI_NSS_SOFT;
+    hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
+    hspi1.Init.FirstBit          = SPI_FIRSTBIT_MSB;
+    hspi1.Init.TIMode            = SPI_TIMODE_DISABLE;
+    hspi1.Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLE;
+    hspi1.Init.CRCPolynomial     = 10;
+
+    HAL_SPI_Init(&hspi1);
+
+    // Enable SPI interrupt in NVIC
+	HAL_NVIC_SetPriority(SPI1_IRQn, 2, 0);
+	HAL_NVIC_EnableIRQ(SPI1_IRQn);
+
+	HAL_SPI_TransmitReceive_IT(&hspi1, txData, rxData, sizeof(txData));
+}
+
+void HAL_SPI_TxRxCpltCallback(SPI_HandleTypeDef *hspi)
+{
+	if (hspi->Instance == SPI1)
+	{
+		printf("SPI TX: %s\n", txData);
+		printf("SPI RX: %s\n\n", rxData);
+		HAL_SPI_TransmitReceive_IT(&hspi1, txData, rxData, sizeof(txData));
+	}
+}
+
+void SPI1_IRQHandler(void)
+{
+    HAL_SPI_IRQHandler(&hspi1);
+}
+
