@@ -5,11 +5,13 @@ Repository for microcontroller programs, simulations, and circuits across multip
 ## Supported Platforms
 - ESP32/ESP8266
 - STM32 ARM Cortex
-- TI MSP430/Tiva C
+- TI CC3200
 - AVR (Arduino/Atmega)
 - ARM Cortex-M
-- LPC21xx/LPC17xx
-- PIC Microchip
+- LPC21xx
+- dsPIC33 Microchip
+- Renesas RL78xx
+- CH32V WCH
 
 ## Development Tools
 
@@ -19,6 +21,7 @@ Repository for microcontroller programs, simulations, and circuits across multip
 - Code Composer Studio (TI)
 - Atmel Studio, MPLAB X
 - IAR Embedded Workbench
+- Mount River Studio
 
 ### Compilers
 - GCC ARM, AVR-GCC
