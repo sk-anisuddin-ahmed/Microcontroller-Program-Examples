@@ -1,0 +1,11 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\clock.o"
+".\gpio.o"
+".\main.o"
+".\uart.o"
+".\timer.o"
+--strict --scatter ".\004_UART_Serial_Terminal.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\004_UART_Serial_Terminal.map" -o .\004_UART_Serial_Terminal.axf

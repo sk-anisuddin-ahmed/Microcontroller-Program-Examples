@@ -1,0 +1,11 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\main.o"
+".\clock.o"
+".\gpio.o"
+".\eirq.o"
+".\led.o"
+--strict --scatter ".\002_Push_Button.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\002_Push_Button.map" -o .\002_Push_Button.axf

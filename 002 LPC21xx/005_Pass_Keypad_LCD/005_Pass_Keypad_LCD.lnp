@@ -1,0 +1,11 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\clock.o"
+".\gpio.o"
+".\main.o"
+".\lcd.o"
+".\timer.o"
+--strict --scatter ".\005_Pass_Keypad_LCD.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\005_Pass_Keypad_LCD.map" -o .\005_Pass_Keypad_LCD.axf

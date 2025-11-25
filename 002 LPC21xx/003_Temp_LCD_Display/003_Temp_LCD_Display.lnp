@@ -1,0 +1,12 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\clock.o"
+".\gpio.o"
+".\lcd.o"
+".\main.o"
+".\timer.o"
+".\adc.o"
+--strict --scatter ".\003_Temp_LCD_Display.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\003_Temp_LCD_Display.map" -o .\003_Temp_LCD_Display.axf

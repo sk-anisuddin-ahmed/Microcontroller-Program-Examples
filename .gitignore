@@ -1,0 +1,83 @@
+# Compiled Object Files
+*.o
+*.obj
+*.a
+*.axf
+*.crf
+*.d
+*.dep
+*.lst
+*.map
+
+# Executable / Binary Files
+*.exe
+*.out
+*.hex
+*.bin
+
+# Keil uVision Project Intermediate Files
+*.uvopt
+*.uvoptx
+*.uvguix.*
+*._*
+*.bak
+
+# Logs, Build Files
+*.build_log.htm
+
+# IDE and Editor Directories
+.vscode/
+.vs/
+
+# Backup / Temporary Files
+*.tmp
+*.swp
+*.swo
+*.log
+
+# Debugger Files
+*.sct
+*.uvproj.bak
+
+# Build output directories
+**/Debug/
+**/Release/
+**/build/
+**/out/
+
+# Object files, libraries, executables
+*.o
+*.d
+*.elf
+*.map
+*.bin
+*.hex
+*.axf
+*.srec
+*.lst
+
+# IDE metadata (can be regenerated)
+.settings/
+.metadata/
+*.launch
+
+# Eclipse/STM32CubeIDE workspace files
+*.project
+*.cproject
+
+# Backup and temp files
+*~
+*.bak
+*.swp
+*.tmp
+
+# Generated code (optional: keep if you want to version CubeMX output)
+/STM32CubeMX/
+*.ioc
+
+# Logs
+*.log
+
+# OS-specific junk
+.DS_Store
+Thumbs.db

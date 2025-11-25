@@ -1,0 +1,10 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\main.o"
+".\pwm.o"
+".\clock.o"
+".\timer.o"
+--strict --scatter ".\006_PWM_Control.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\006_PWM_Control.map" -o .\006_PWM_Control.axf

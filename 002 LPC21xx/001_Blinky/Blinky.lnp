@@ -1,0 +1,10 @@
+--cpu ARM7TDMI
+".\startup.o"
+".\main.o"
+".\clock.o"
+".\gpio.o"
+".\timer.o"
+--strict --scatter ".\Blinky.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Blinky.map" -o .\Blinky.axf
