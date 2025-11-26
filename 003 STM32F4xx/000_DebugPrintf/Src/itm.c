@@ -71,7 +71,7 @@ typedef union {
 } ITM_STIM_t;
 #define ITM_STIM_PORT ((ITM_STIM_t*)0xE0000000UL)
 
-void SWO_Init(void)
+void ITM_Init(void)
 {
     DEMCR.TRCENA = 1;
     ITM_TER.STIM0 = 1;

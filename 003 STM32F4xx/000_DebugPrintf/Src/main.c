@@ -4,10 +4,10 @@
 
 int main(void)
 {
-	SWO_Init();
+	ITM_Init();
 
     while(1)
     {
-    	printf("Hello World\n");
+
     }
 }
