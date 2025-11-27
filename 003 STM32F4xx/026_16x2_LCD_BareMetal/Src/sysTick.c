@@ -17,7 +17,7 @@ void SysTick_Handler(void)
 
 void SysTick_Init(void)
 {
-    SysTick->LOAD.RELOAD = (SystemCoreClock / 1000); // 1ms reload
+    SysTick->LOAD.RELOAD = (SystemCoreClock / 1000) - 1; // 1ms reload
     SysTick->VAL.CURRENT = 0;                            // clear counter
 
     SysTick->CTRL.ENABLE    = 1; // enable counter

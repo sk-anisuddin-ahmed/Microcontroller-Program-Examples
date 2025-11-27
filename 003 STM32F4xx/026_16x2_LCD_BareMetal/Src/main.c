@@ -11,11 +11,11 @@ int main(void)
 	SysTick_Init();
 
 	LCD_BEGIN();
-	msDelay(1000);
 	LCD_CLEAR();
-	LCD_CLEAR();
+	LCD_SET_CURSOR(0, 0);
+	LCD_SEND_STRING("Hello India");
 	LCD_SET_CURSOR(0, 1);
-	LCD_SEND_STRING("STARTING.....");
+	LCD_SEND_STRING("I'm Anis *_*");
 
     while(1)
     {
