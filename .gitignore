@@ -21,9 +21,10 @@
 *.uvguix.*
 *._*
 *.bak
-*.skani
+*.uvgui.skani
 *.uvproj
 *.lnp
+*.htm
 
 # Logs, Build Files
 *.build_log.htm
