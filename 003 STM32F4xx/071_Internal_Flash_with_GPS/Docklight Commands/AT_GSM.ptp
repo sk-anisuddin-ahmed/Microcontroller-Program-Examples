@@ -1,0 +1,120 @@
+VERSION
+7
+
+COMMSETTINGS
+0
+4
+2
+9600
+2
+63
+4
+0
+0
+
+COMMDISPLAY
+0
+
+SEND
+1
+AT {Basic Test}
+41 54 0D 0A
+0
+5
+// Check if modem is alive
+
+SEND
+2
+NMEA {GGA}
+24 47 50 47 47 41 0D 0A
+0
+5
+// GPS Fix Data (lat, lon, alt)
+
+SEND
+3
+NMEA {RMC}
+24 47 50 52 4D 43 0D 0A
+0
+5
+// Recommended Minimum Data (time, date, position, speed)
+
+SEND
+4
+NMEA {GSV}
+24 47 50 47 53 56 0D 0A
+0
+5
+// Satellites in view
+
+SEND
+5
+UBX {Set Baud 115200}
+B5 62 06 00 14 00 01 00 D0 08 00 00 00 C2 01 00 00 00 00 00 00 00 00 00 00 00
+0
+5
+// Change baud rate to 115200
+
+SEND
+6
+UBX {Set Update Rate 5Hz}
+B5 62 06 08 06 00 C8 00 01 00 01 00 DE 6A
+0
+5
+// Change position update rate to 5Hz
+
+SEND
+7
+UBX {Disable GSV}
+B5 62 06 01 08 00 F0 03 00 00 00 00 00 00 0D 5A
+0
+5
+// Disable GSV NMEA sentence
+
+SEND
+8
+UBX {Set Dynamic Model Car}
+B5 62 06 24 24 00 01 00 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+0
+5
+// Navigation mode: Automotive
+
+SEND
+9
+UBX {Enable SBAS}
+B5 62 06 16 08 00 01 00 01 00 00 00 00 00 26 6F
+0
+5
+// Enable SBAS (WAAS/EGNOS)
+
+SEND
+10
+UBX {Power Save Mode}
+B5 62 06 57 02 00 01 00 59 2E
+0
+5
+// Switch to Power Save mode
+
+SEND
+11
+UBX {Save Config}
+B5 62 06 09 0D 00 00 00 00 FF FF 00 00 00 00 00 00 17 31 BF
+0
+5
+// Save settings to EEPROM
+
+SEND
+2
+AT+CGNSPWR=1 {Power on GPS engine}
+41 54 2B 43 47 4E 53 50 57 52 3D 31 0D 0A
+0
+5
+// Enable GNSS power
+
+SEND
+3
+AT+CGNSINF {Request GPS information}
+41 54 2B 43 47 4E 53 49 4E 46 0D 0A
+0
+5
+// Get GNSS fix data (lat, lon, time, etc.)
