@@ -1,0 +1,173 @@
+VERSION
+7
+
+COMMSETTINGS
+0
+4
+2
+9600
+2
+63
+4
+0
+0
+
+COMMDISPLAY
+0
+
+SEND
+1
+AT {Basic Test}
+41 54 0D 0A
+0
+5
+// Check if modem is alive
+
+SEND
+1
+ATE0 {Echo Off}
+41 54 45 30 0D 0A
+0
+5
+// Disable command echo
+
+SEND
+1
+AT+IPR=9600 {Set Baud Rate}
+41 54 2B 49 50 52 3D 39 36 30 30 0D 0A
+0
+5
+// Set fixed baud rate to 9600
+
+SEND
+1
+AT+CMGF=1 {SMS Text Mode}
+41 54 2B 43 4D 47 46 3D 31 0D 0A
+0
+5
+// Enable SMS text mode
+
+SEND
+1
+AT+CMGS="+919999999999" {Send SMS}
+41 54 2B 43 4D 47 53 3D 22 2B 39 31 39 39 39 39 39 39 39 39 39 39 22 0D 0A
+0
+5
+// Send SMS to dummy number
+
+WAIT
+>
+3E
+// Wait for '>' prompt
+
+SEND
+1
+Hello, this is a test SMS! {Message Body}
+48 65 6C 6C 6F 2C 20 74 68 69 73 20 69 73 20 61 20 74 65 73 74 20 53 4D 53 21
+0
+5
+// Message content
+
+SEND
+1
+Ctrl+Z {End SMS}
+1A
+0
+5
+// End SMS with Ctrl+Z
+
+SEND
+1
+AT+CMGR=1 {Read SMS}
+41 54 2B 43 4D 47 52 3D 31 0D 0A
+0
+5
+// Read SMS at index 1
+
+SEND
+1
+AT+CMGD=1 {Delete SMS}
+41 54 2B 43 4D 47 44 3D 31 0D 0A
+0
+5
+// Delete SMS at index 1
+
+SEND
+1
+AT+CNMI=1,2,0,0,0 {!New SMS Indications}
+41 54 2B 43 4E 4D 49 3D 31 2C 32 2C 30 2C 30 2C 30 0D 0A
+0
+5
+// Configure SMS notifications
+
+SEND
+1
+AT+CLIP=1 {Caller ID}
+41 54 2B 43 4C 49 50 3D 31 0D 0A
+0
+5
+// Enable caller ID
+
+SEND
+1
+AT+CREG? {Network Registration}
+41 54 2B 43 52 45 47 3F 0D 0A
+0
+5
+// Check network registration status
+
+SEND
+1
+AT+CSQ {Signal Quality}
+41 54 2B 43 53 51 0D 0A
+0
+5
+// Get signal strength
+
+SEND
+1
+AT+CPIN? {SIM Status}
+41 54 2B 43 50 49 4E 3F 0D 0A
+0
+5
+// Check if SIM is ready
+
+SEND
+1
+AT+COPS? {Current Operator}
+41 54 2B 43 4F 50 53 3F 0D 0A
+0
+5
+// Query current operator
+
+SEND
+1
+AT+COPS=? {Carrier Search}
+41 54 2B 43 4F 50 53 3D 3F 0D 0A
+0
+5
+// List available carriers
+
+SEND
+1
+ATD+919999999999; {Dialing}
+41 54 44 2B 39 31 39 39 39 39 39 39 39 39 39 39 3B 0D 0A
+0
+5
+// Dial dummy number
+
+SEND
+1
+ATA {Answer Call}
+41 54 41 0D 0A
+0
+5
+// Answer incoming call
+
+SEND
+1
+ATH {Hang Up Call}
+41 54 48 0D 0A
+0
+5
+// Hang up call
