@@ -8,6 +8,10 @@
 *.dep
 *.lst
 *.map
+*.cpp
+*.lnp
+*.skani
+*.uvproj
 
 # Executable / Binary Files
 *.exe
