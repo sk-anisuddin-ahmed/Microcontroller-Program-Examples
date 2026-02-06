@@ -3,7 +3,7 @@
 Repository for microcontroller programs, simulations, and circuits across multiple platforms.
 
 ## Supported Platforms
-- ESP32/ESP8266
+- ESP32
 - STM32 ARM Cortex
 - TI CC3200
 - AVR (Arduino/Atmega)
